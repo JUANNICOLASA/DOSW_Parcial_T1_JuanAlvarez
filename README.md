@@ -9,11 +9,16 @@
 ## Evidencias de Prerrequisitos
 
 ### Acceso a Herramientas
-![Herramienta de Modelado (Draw.io)](<img width="1365" height="649" alt="image" src="https://github.com/user-attachments/assets/0ef68dda-a743-4584-a49b-7d9318144d64" />
-)
-![Figma](<img width="1365" height="647" alt="image" src="https://github.com/user-attachments/assets/c3dcd848-dc71-4783-a9cf-e54d728417d4" />
-)
+![Herramienta de Modelado (Draw.io)]
+
+<img width="1365" height="644" alt="image" src="https://github.com/user-attachments/assets/c61a1def-985f-4a5c-9107-d04b646376e9" />
+
+![Figma]
+
+<img width="1365" height="647" alt="image" src="https://github.com/user-attachments/assets/c5761c47-4b88-4f97-a33c-ad8fb436aa3a" />
 
 ### Compilación Exitosa con Maven
-![Build Success](<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/e0af16c0-fa8a-41d8-beea-59b36eb69622" />
-)
+![Build Success]
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/2efaa873-c490-40a2-bc08-6e0def48747e" />
+
