@@ -26,30 +26,52 @@
 
 #Punto 1 Diagrama de Contexto:
 
-<img width="874" height="882" alt="DiagramaContexto drawio" src="https://github.com/user-attachments/assets/bcb92c3b-6cb5-4027-9a61-d87c771a0567" />
+<img width="495" height="494" alt="image" src="https://github.com/user-attachments/assets/0deed9ac-4fb1-4e7c-a032-241dc812680f" />
 
-#Punto 2 Requerimientos:
 
-<img width="673" height="436" alt="image" src="https://github.com/user-attachments/assets/852f0d0a-9406-4854-95b4-0434259c6584" />
+### 2. Requerimientos del Sistema
 
-<img width="667" height="208" alt="image" src="https://github.com/user-attachments/assets/6653f557-a750-4bbc-a8a5-1087624fd528" />
+| Código | Nombre del requerimiento | Descripción breve | Actor principal | Servicio |
+| :--- | :--- | :--- | :--- | :--- |
+| **PWH-RF-01** | Filtrar catálogo de mascotas | Permite recorrer y filtrar el inventario bajo criterios específicos (especie, edad, compatibilidad) ocultando la estructura interna **(Justifica Iterator)**. | Usuario | Catálogo |
+| **PWH-RF-02** | Consultar red de refugios | Permite visualizar el inventario tratando de manera uniforme a un refugio local, una ciudad o la red nacional completa **(Justifica Composite)**. | Usuario | Refugios |
+| **PWH-RF-03** | Gestionar estado de adopción | Permite cambiar el estado de una solicitud (Pendiente, En revisión, Aprobada, Rechazada, Completada) para el control del proceso. | Refugio | Adopciones |
+| **PWH-RNF-01** | Tiempo de respuesta del catálogo | Las búsquedas en el catálogo de mascotas deben ejecutarse en un tiempo ≤ 1 s para el 90% de las consultas realizadas. | Sistema | Rendimiento |
+| **PWH-RNF-02** | Escalabilidad del inventario | El sistema debe estar en capacidad de soportar hasta 10.000 mascotas registradas sin presentar degradación en su rendimiento. | Sistema | Infraestructura |
 
-#Punto 3 Diagramas de Caso de Uso:
+### 3. Diagramas de Caso de Uso e Historias de Usuario
 
-Requerimiento:
-PWH-01
-<img width="719" height="451" alt="image" src="https://github.com/user-attachments/assets/b6eea95a-9297-4a61-9b25-e6f2aea1f09c" />
+**Requerimiento: PWH-RF-01 (Filtrar catálogo de mascotas - Patrón Iterator)**
+* **Historia de Usuario:** Como usuario interesado en adoptar, quiero poder filtrar el catálogo de mascotas por especie, rango de edad y compatibilidad, para encontrar rápidamente la mascota que mejor se adapte a las condiciones de mi hogar sin importar cómo estén almacenadas internamente.
 
-Historia de Usuario:
-Como Refugio quiero Gestionar las mascotas porque necesito registrarlas por especie.
+**Requerimiento: PWH-RF-02 (Consultar red de refugios - Patrón Composite)**
+* **Historia de Usuario:** Como usuario interesado en adoptar, quiero poder visualizar las mascotas disponibles tanto en un refugio local específico como en toda la red de una ciudad o a nivel nacional, para explorar todas mis opciones de adopción de manera uniforme.
+
+Diagrama:
+
+<img width="1056" height="272" alt="CasosDeUso drawio (1)" src="https://github.com/user-attachments/assets/85b95615-17b2-4de0-9787-cdc3d2b463de" />
+
 
 #Punto 4 plantilla de Análisis de Requerimientos:
+Archivos subidos a docs/requirements/ 
 
-<img width="808" height="851" alt="image" src="https://github.com/user-attachments/assets/836777c5-b726-43e3-ab80-e8b6f73285f9" />
+### 6. Identificación y Especificación de Patrones de Diseño
 
-<img width="808" height="851" alt="image" src="https://github.com/user-attachments/assets/82a6ba28-6228-45d3-9c19-a92ad51ec5b0" />
+#### a. Nombre del Patrón y Tipo
+* **Iterator:** Patrón de **Comportamiento**.
+* **Composite:** Patrón **Estructural**.
 
-<img width="802" height="449" alt="image" src="https://github.com/user-attachments/assets/9ddfa031-9cad-4354-93c2-be1a1a9cd41d" />
+#### b. Justificación de la Decisión en el Contexto de ECI Paw Connect
+* **Iterator:** La plataforma necesita permitir a los usuarios explorar y filtrar el catálogo de mascotas bajo múltiples criterios como por especie, por rango de edad, por compatibilidad, o en su totalidad. El patrón Iterator es ideal porque permite recorrer toda la colección de mascotas sin exponer la estructura de almacenamiento interna, ofreciendo una separación limpia entre los datos y los algoritmos de recorrido.
+* **Composite:** La estructura organizacional de la fundación es jerárquica. El patrón Composite permite tratar a un refugio individual (hoja) y a una red completa de refugios (compuesto) de exactamente la misma manera. Esto facilita que una consulta a nivel de ciudad o nacional agrupe y devuelva el inventario de forma transparente sin que el cliente conozca los detalles de la jerarquía.
+
+d. Cuáles principios SOLID está aplicando y por qué
+Single Responsibility (SRP): Establece que una clase debe ser responsable de una sola cosa. Se aplica separando la estructura jerárquica de la lógica de recorrido.  
+
+Open/Closed (OCP): Las entidades deben estar abiertas para su extensión pero cerradas para su modificación. Si el día de mañana Paw Connect quiere filtrar por Tamaño, solo se crea un nuevo IteradorPorTamaño que implemente la interfaz IteradorMascota, sin modificar el código de los refugios ni de los iteradores existentes.  
+
+Dependency Inversion (DIP): Los módulos de alto nivel no deben depender de los de bajo nivel, las dependencias deben estar en las abstracciones. El sistema de búsqueda dependerá de las interfaces ComponenteRefugio e IteradorMascota, ignorando si está tratando con un RefugioLocal específico o un IteradorPorEspecie.
+
 
 
 
