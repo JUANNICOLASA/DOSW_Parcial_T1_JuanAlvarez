@@ -22,3 +22,6 @@
 
 <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/2efaa873-c490-40a2-bc08-6e0def48747e" />
 
+### Bitacora:
+https://github.com/JUANNICOLASA/Bitacora
+
